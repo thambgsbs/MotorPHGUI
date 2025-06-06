@@ -41,6 +41,9 @@ public class View_Attendance extends javax.swing.JDialog {
 
         lbl_ED.setText("Enter Employee ID (10001-100034):");
 
+        txt_EDEmpID.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        txt_EDEmpID.setForeground(new java.awt.Color(153, 153, 153));
+        txt_EDEmpID.setText("Please Enter Employee ID");
         txt_EDEmpID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_EDEmpIDActionPerformed(evt);
@@ -56,7 +59,9 @@ public class View_Attendance extends javax.swing.JDialog {
 
         lbl_ED1.setText("Cut-off Period");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(153, 153, 153));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Period", "June 15", "2024", "June 30", "2024", "July 15", "2024", "July 31", "2024", "August 15", "2024", "August 31", "2024", "September 15", "2024", "September 30", "2024", "October 15", "2024", "October 31", "2024", "November 15", "2024", "November 30", "2024", "December 15", "2024", "December 31", "2024" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -94,6 +94,15 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_EDEmpID">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="2"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Please Enter Employee ID"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_EDEmpIDActionPerformed"/>
       </Events>
@@ -113,12 +122,43 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="2"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="29">
+            <StringItem index="0" value="Choose a Period"/>
+            <StringItem index="1" value="June 15"/>
+            <StringItem index="2" value="2024"/>
+            <StringItem index="3" value="June 30"/>
+            <StringItem index="4" value="2024"/>
+            <StringItem index="5" value="July 15"/>
+            <StringItem index="6" value="2024"/>
+            <StringItem index="7" value="July 31"/>
+            <StringItem index="8" value="2024"/>
+            <StringItem index="9" value="August 15"/>
+            <StringItem index="10" value="2024"/>
+            <StringItem index="11" value="August 31"/>
+            <StringItem index="12" value="2024"/>
+            <StringItem index="13" value="September 15"/>
+            <StringItem index="14" value="2024"/>
+            <StringItem index="15" value="September 30"/>
+            <StringItem index="16" value="2024"/>
+            <StringItem index="17" value="October 15"/>
+            <StringItem index="18" value="2024"/>
+            <StringItem index="19" value="October 31"/>
+            <StringItem index="20" value="2024"/>
+            <StringItem index="21" value="November 15"/>
+            <StringItem index="22" value="2024"/>
+            <StringItem index="23" value="November 30"/>
+            <StringItem index="24" value="2024"/>
+            <StringItem index="25" value="December 15"/>
+            <StringItem index="26" value="2024"/>
+            <StringItem index="27" value="December 31"/>
+            <StringItem index="28" value="2024"/>
           </StringArray>
         </Property>
       </Properties>
