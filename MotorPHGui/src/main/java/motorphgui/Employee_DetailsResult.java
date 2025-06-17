@@ -68,6 +68,7 @@ public class Employee_DetailsResult extends javax.swing.JDialog {
         lbl_resProratedAll = new javax.swing.JLabel();
         btn_Results_Home = new javax.swing.JButton();
         btn_Results_Home1 = new javax.swing.JButton();
+        btn_Results_UpdateRec = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -165,10 +166,31 @@ public class Employee_DetailsResult extends javax.swing.JDialog {
             }
         });
 
+        btn_Results_UpdateRec.setForeground(new java.awt.Color(51, 102, 0));
+        btn_Results_UpdateRec.setText("Update Record");
+        btn_Results_UpdateRec.setToolTipText("");
+        btn_Results_UpdateRec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Results_UpdateRecActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(btn_Results_Home)
+                .addGap(31, 31, 31)
+                .addComponent(btn_Results_UpdateRec)
+                .addGap(43, 43, 43)
+                .addComponent(btn_Results_Home1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_main)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,16 +257,6 @@ public class Employee_DetailsResult extends javax.swing.JDialog {
                     .addComponent(lbl_resBasicSal, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                     .addComponent(lbl_resRiceSub, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
                 .addGap(6, 6, 6))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_main)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(btn_Results_Home)
-                .addGap(189, 189, 189)
-                .addComponent(btn_Results_Home1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,8 +327,10 @@ public class Employee_DetailsResult extends javax.swing.JDialog {
                     .addComponent(lbl_resIS))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_Results_Home, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_Results_Home1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_Results_UpdateRec)
+                        .addComponent(btn_Results_Home1))
+                    .addComponent(btn_Results_Home))
                 .addGap(14, 14, 14))
         );
 
@@ -330,6 +344,10 @@ public class Employee_DetailsResult extends javax.swing.JDialog {
     private void btn_Results_Home1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Results_Home1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_Results_Home1ActionPerformed
+
+    private void btn_Results_UpdateRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Results_UpdateRecActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Results_UpdateRecActionPerformed
 
     /**
      * @param args the command line arguments
@@ -377,6 +395,7 @@ public class Employee_DetailsResult extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Results_Home;
     private javax.swing.JButton btn_Results_Home1;
+    private javax.swing.JButton btn_Results_UpdateRec;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

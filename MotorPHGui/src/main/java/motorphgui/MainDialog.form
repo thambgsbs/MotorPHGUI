@@ -27,12 +27,13 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="btn_MEDetails" alignment="2" pref="267" max="32767" attributes="0"/>
-                  <Component id="btn_MAttendance" alignment="2" max="32767" attributes="0"/>
-                  <Component id="btn_MWHours" alignment="2" max="32767" attributes="0"/>
-                  <Component id="btn_MPPayroll" alignment="2" max="32767" attributes="0"/>
-                  <Component id="btn_MExit" alignment="2" max="32767" attributes="0"/>
+                  <Component id="btn_MEDetails" alignment="2" min="-2" pref="267" max="-2" attributes="0"/>
+                  <Component id="btn_MAttendance" alignment="2" min="-2" pref="267" max="-2" attributes="0"/>
+                  <Component id="btn_MWHours" alignment="2" min="-2" pref="267" max="-2" attributes="0"/>
+                  <Component id="btn_MPPayroll" alignment="2" min="-2" pref="267" max="-2" attributes="0"/>
+                  <Component id="btn_MExit" alignment="2" min="-2" pref="267" max="-2" attributes="0"/>
                   <Component id="lbl_main" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_MAddRem" alignment="2" min="-2" pref="267" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
           </Group>
@@ -44,16 +45,18 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lbl_main" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="btn_MEDetails" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="btn_MAttendance" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="btn_MWHours" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="btn_MPPayroll" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="btn_MExit" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="btn_MEDetails" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btn_MAddRem" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btn_MAttendance" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btn_MWHours" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btn_MPPayroll" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btn_MExit" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -106,6 +109,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="MotorPH Payroll System"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_MAddRem">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add/Remove Employee"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_MAddRemActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
