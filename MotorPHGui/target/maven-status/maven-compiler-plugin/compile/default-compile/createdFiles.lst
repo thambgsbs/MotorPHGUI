@@ -31,7 +31,9 @@ motorphgui\MainDialog.class
 motorphgui\Employee_Details.class
 motorphgui\MainDialog$7.class
 motorphgui\Employee_DetailsUpdate$2.class
+motorphgui\ListOfEmployees$1.class
 motorphgui\View_AttendanceResult$2.class
+motorphgui\ListOfEmployees.class
 motorphgui\Employee_Details$2.class
 motorphgui\MainDialog$2.class
 motorphgui\View_Attendance$3.class

@@ -142,8 +142,8 @@ public class MainDialog extends javax.swing.JDialog {
     private void btn_MEDetailsActionPerformed(java.awt.event.ActionEvent evt) {                                              
 //GEN-FIRST:event_btn_MEDetailsActionPerformed
     this.dispose(); 
-    Employee_Details empDetails = new Employee_Details(null, true);    
-    empDetails.setVisible(true);   
+    ListOfEmployees listWindow = new ListOfEmployees();
+    listWindow.setVisible(true);
     }//GEN-LAST:event_btn_MEDetailsActionPerformed
 
     private void btn_MAttendanceActionPerformed(java.awt.event.ActionEvent evt) {                                                
