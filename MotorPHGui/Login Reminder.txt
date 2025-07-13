@@ -1,0 +1,4 @@
+[[ IMPORTANT REMINDER ]]
+
+USERNAME: EMPLOYEE ID
+PASSWORD: Birth Year + Employee ID + First Letter of Last Name + First Letter of First Name

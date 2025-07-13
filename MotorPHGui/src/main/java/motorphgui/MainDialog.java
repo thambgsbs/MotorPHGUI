@@ -32,7 +32,6 @@ public class MainDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         btn_MEDetails = new javax.swing.JButton();
-        btn_MAttendance = new javax.swing.JButton();
         btn_MExit = new javax.swing.JButton();
         btn_MWHours = new javax.swing.JButton();
         btn_MPPayroll = new javax.swing.JButton();
@@ -46,13 +45,6 @@ public class MainDialog extends javax.swing.JDialog {
         btn_MEDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_MEDetailsActionPerformed(evt);
-            }
-        });
-
-        btn_MAttendance.setText("Attendance");
-        btn_MAttendance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_MAttendanceActionPerformed(evt);
             }
         });
 
@@ -92,35 +84,43 @@ public class MainDialog extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btn_MEDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_MAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_MWHours, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_MPPayroll, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_MExit, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_main)
-                    .addComponent(btn_MAddRem, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(lbl_main))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(btn_MEDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(btn_MAddRem, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(btn_MWHours, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(btn_MPPayroll, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(btn_MExit, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(lbl_main)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btn_MEDetails)
+                .addGap(6, 6, 6)
+                .addComponent(btn_MAddRem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_MAddRem, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_MAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_MWHours, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_MPPayroll, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_MExit, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(btn_MWHours)
+                .addGap(6, 6, 6)
+                .addComponent(btn_MPPayroll)
+                .addGap(6, 6, 6)
+                .addComponent(btn_MExit)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,15 +128,10 @@ public class MainDialog extends javax.swing.JDialog {
 
     private void btn_MEDetailsActionPerformed(java.awt.event.ActionEvent evt) {                                              
 //GEN-FIRST:event_btn_MEDetailsActionPerformed
-    Employee_Details empDetails = new Employee_Details(null, true);    
-    empDetails.setVisible(true);    // TODO add your handling code here: 
+    this.dispose(); 
+    ListOfEmployees listWindow = new ListOfEmployees();
+    listWindow.setVisible(true);
     }//GEN-LAST:event_btn_MEDetailsActionPerformed
-
-    private void btn_MAttendanceActionPerformed(java.awt.event.ActionEvent evt) {                                                
-//GEN-FIRST:event_btn_MAttendanceActionPerformed
-    View_Attendance attendance = new View_Attendance(null, true);
-attendance.setVisible(true);
-    }//GEN-LAST:event_btn_MAttendanceActionPerformed
 
     private void btn_MExitActionPerformed(java.awt.event.ActionEvent evt) {                                          
 //GEN-FIRST:event_btn_MExitActionPerformed
@@ -145,18 +140,22 @@ attendance.setVisible(true);
 
     private void btn_MWHoursActionPerformed(java.awt.event.ActionEvent evt) {                                            
 //GEN-FIRST:event_btn_MWHoursActionPerformed
+    this.dispose(); 
     View_Attendance workHours = new View_Attendance(null, true);
-workHours.setVisible(true);
+    workHours.setVisible(true);
     }//GEN-LAST:event_btn_MWHoursActionPerformed
 
     private void btn_MPPayrollActionPerformed(java.awt.event.ActionEvent evt) {                                              
 //GEN-FIRST:event_btn_MPPayrollActionPerformed
-    ProcessPayroll payroll = new ProcessPayroll(); 
-    payroll.setVisible(true); // Opens a new window showing payroll summary
+    this.dispose(); 
+    Make_Payroll makepayroll = new Make_Payroll(null, true);
+    makepayroll.setVisible(true);
     }//GEN-LAST:event_btn_MPPayrollActionPerformed
 
     private void btn_MAddRemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MAddRemActionPerformed
-        // TODO add your handling code here:
+    this.dispose(); 
+    Employee_DetailsUpdate empDetailsUpdate = new Employee_DetailsUpdate(null, true);    
+    empDetailsUpdate.setVisible(true);
     }//GEN-LAST:event_btn_MAddRemActionPerformed
 
     /**
@@ -189,6 +188,7 @@ workHours.setVisible(true);
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
             MainDialog dialog = new MainDialog(new javax.swing.JFrame(), true);
+            dialog.setLocationRelativeTo(null);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -201,7 +201,6 @@ workHours.setVisible(true);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_MAddRem;
-    private javax.swing.JButton btn_MAttendance;
     private javax.swing.JButton btn_MEDetails;
     private javax.swing.JButton btn_MExit;
     private javax.swing.JButton btn_MPPayroll;
