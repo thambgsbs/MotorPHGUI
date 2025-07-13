@@ -61,12 +61,28 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="lbl_Att_LMin" pref="144" max="32767" attributes="0"/>
                   </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <Component id="btn_Results_Home" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btn_Results_Home1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Component id="btn_Results_Home" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                      <Component id="btn_Results_Home1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="lbl_ED6" min="-2" pref="196" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lbl_Att_LastName" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lbl_ED7" min="-2" pref="196" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="lbl_Att_FirstName" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -84,6 +100,16 @@
                   <Component id="lbl_Att_EmpID" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbl_ED6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_Att_LastName" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbl_ED7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_Att_FirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbl_ED1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lbl_Att_COP" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -108,12 +134,12 @@
                   <Component id="lbl_ED5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lbl_Att_LMin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_Results_Home" alignment="3" max="32767" attributes="0"/>
                   <Component id="btn_Results_Home1" alignment="3" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -129,7 +155,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_ED">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Enter Employee ID (10001-100034):"/>
+        <Property name="text" type="java.lang.String" value="Employee ID:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_ED1">
@@ -202,6 +228,26 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Results_Home1ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_ED6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Last Name:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_ED7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="First Name:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_Att_LastName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Att_Res_LastName"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_Att_FirstName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Att_Res_FirstName"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

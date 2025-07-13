@@ -32,7 +32,6 @@ public class MainDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         btn_MEDetails = new javax.swing.JButton();
-        btn_MAttendance = new javax.swing.JButton();
         btn_MExit = new javax.swing.JButton();
         btn_MWHours = new javax.swing.JButton();
         btn_MPPayroll = new javax.swing.JButton();
@@ -46,13 +45,6 @@ public class MainDialog extends javax.swing.JDialog {
         btn_MEDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_MEDetailsActionPerformed(evt);
-            }
-        });
-
-        btn_MAttendance.setText("Attendance");
-        btn_MAttendance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_MAttendanceActionPerformed(evt);
             }
         });
 
@@ -104,9 +96,6 @@ public class MainDialog extends javax.swing.JDialog {
                         .addComponent(btn_MAddRem, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(btn_MAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
                         .addComponent(btn_MWHours, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
@@ -125,15 +114,13 @@ public class MainDialog extends javax.swing.JDialog {
                 .addComponent(btn_MEDetails)
                 .addGap(6, 6, 6)
                 .addComponent(btn_MAddRem)
-                .addGap(6, 6, 6)
-                .addComponent(btn_MAttendance)
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_MWHours)
                 .addGap(6, 6, 6)
                 .addComponent(btn_MPPayroll)
                 .addGap(6, 6, 6)
                 .addComponent(btn_MExit)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,13 +133,6 @@ public class MainDialog extends javax.swing.JDialog {
     listWindow.setVisible(true);
     }//GEN-LAST:event_btn_MEDetailsActionPerformed
 
-    private void btn_MAttendanceActionPerformed(java.awt.event.ActionEvent evt) {                                                
-//GEN-FIRST:event_btn_MAttendanceActionPerformed
-    this.dispose(); 
-    View_Attendance attendance = new View_Attendance(null, true);
-    attendance.setVisible(true);
-    }//GEN-LAST:event_btn_MAttendanceActionPerformed
-
     private void btn_MExitActionPerformed(java.awt.event.ActionEvent evt) {                                          
 //GEN-FIRST:event_btn_MExitActionPerformed
     System.exit(0);
@@ -162,14 +142,14 @@ public class MainDialog extends javax.swing.JDialog {
 //GEN-FIRST:event_btn_MWHoursActionPerformed
     this.dispose(); 
     View_Attendance workHours = new View_Attendance(null, true);
-workHours.setVisible(true);
+    workHours.setVisible(true);
     }//GEN-LAST:event_btn_MWHoursActionPerformed
 
     private void btn_MPPayrollActionPerformed(java.awt.event.ActionEvent evt) {                                              
 //GEN-FIRST:event_btn_MPPayrollActionPerformed
     this.dispose(); 
-    ProcessPayroll payroll = new ProcessPayroll(); 
-    payroll.setVisible(true); // Opens a new window showing payroll summary
+    Make_Payroll makepayroll = new Make_Payroll(null, true);
+    makepayroll.setVisible(true);
     }//GEN-LAST:event_btn_MPPayrollActionPerformed
 
     private void btn_MAddRemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MAddRemActionPerformed
@@ -220,7 +200,6 @@ workHours.setVisible(true);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_MAddRem;
-    private javax.swing.JButton btn_MAttendance;
     private javax.swing.JButton btn_MEDetails;
     private javax.swing.JButton btn_MExit;
     private javax.swing.JButton btn_MPPayroll;
