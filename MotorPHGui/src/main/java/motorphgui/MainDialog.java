@@ -11,16 +11,27 @@ import javax.swing.table.DefaultTableModel;
  * @author admin
  */
 public class MainDialog extends javax.swing.JDialog {
+        private String firstName;
+        private String lastName;
 
     /**
      * Creates new form MainDialog
      * @param parent
      * @param modal
      */
-    public MainDialog(java.awt.Frame parent, boolean modal) {
+    public MainDialog(java.awt.Frame parent, boolean modal, String firstName, String lastName) {
         super(parent, modal);
+        this.firstName = firstName;
+        this.lastName = lastName;
         initComponents();
+        lbl_User.setText(lastName + ", " + firstName);    
     }
+    
+    
+    public MainDialog(java.awt.Frame parent, boolean modal) {
+    super(parent, modal);
+    initComponents();
+    }       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,13 +42,16 @@ public class MainDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jColorChooser1 = new javax.swing.JColorChooser();
         btn_MEDetails = new javax.swing.JButton();
-        btn_MAttendance = new javax.swing.JButton();
         btn_MExit = new javax.swing.JButton();
         btn_MWHours = new javax.swing.JButton();
         btn_MPPayroll = new javax.swing.JButton();
         lbl_main = new javax.swing.JLabel();
         btn_MAddRem = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lbl_User = new javax.swing.JLabel();
+        btn_AttendanceViewer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("MotorPH Payroll System");
@@ -46,13 +60,6 @@ public class MainDialog extends javax.swing.JDialog {
         btn_MEDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_MEDetailsActionPerformed(evt);
-            }
-        });
-
-        btn_MAttendance.setText("Attendance");
-        btn_MAttendance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_MAttendanceActionPerformed(evt);
             }
         });
 
@@ -87,56 +94,81 @@ public class MainDialog extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel1.setText("Logged in as:");
+
+        lbl_User.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lbl_User.setText("lbl_user");
+
+        btn_AttendanceViewer.setText("Attendance Viewer");
+        btn_AttendanceViewer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AttendanceViewerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btn_MEDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_MAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_MWHours, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_MPPayroll, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_MExit, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_main)
-                    .addComponent(btn_MAddRem, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(lbl_main))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btn_MAddRem, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_MWHours, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_MPPayroll, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_MExit, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(57, 57, 57)
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lbl_User, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(8, 8, 8)))
+                            .addComponent(btn_MEDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_AttendanceViewer, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(lbl_main)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btn_MEDetails)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_MAddRem, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_AttendanceViewer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_MAddRem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_MAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_MWHours, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_MPPayroll, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_MExit, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(btn_MWHours)
+                .addGap(6, 6, 6)
+                .addComponent(btn_MPPayroll)
+                .addGap(6, 6, 6)
+                .addComponent(btn_MExit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lbl_User))
+                .addGap(14, 14, 14))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_MEDetailsActionPerformed(java.awt.event.ActionEvent evt) {                                              
 //GEN-FIRST:event_btn_MEDetailsActionPerformed
-    Employee_Details empDetails = new Employee_Details(null, true);    
-    empDetails.setVisible(true);    // TODO add your handling code here: 
+        this.dispose(); 
+        ListOfEmployees listWindow = new ListOfEmployees();
+        listWindow.setVisible(true);
+    
     }//GEN-LAST:event_btn_MEDetailsActionPerformed
-
-    private void btn_MAttendanceActionPerformed(java.awt.event.ActionEvent evt) {                                                
-//GEN-FIRST:event_btn_MAttendanceActionPerformed
-    View_Attendance attendance = new View_Attendance(null, true);
-attendance.setVisible(true);
-    }//GEN-LAST:event_btn_MAttendanceActionPerformed
 
     private void btn_MExitActionPerformed(java.awt.event.ActionEvent evt) {                                          
 //GEN-FIRST:event_btn_MExitActionPerformed
@@ -145,19 +177,34 @@ attendance.setVisible(true);
 
     private void btn_MWHoursActionPerformed(java.awt.event.ActionEvent evt) {                                            
 //GEN-FIRST:event_btn_MWHoursActionPerformed
-    View_Attendance workHours = new View_Attendance(null, true);
-workHours.setVisible(true);
+        this.dispose(); 
+        View_Attendance workHours = new View_Attendance(null, true);
+        workHours.setVisible(true);
+         
     }//GEN-LAST:event_btn_MWHoursActionPerformed
 
     private void btn_MPPayrollActionPerformed(java.awt.event.ActionEvent evt) {                                              
 //GEN-FIRST:event_btn_MPPayrollActionPerformed
-    ProcessPayroll payroll = new ProcessPayroll(); 
-    payroll.setVisible(true); // Opens a new window showing payroll summary
+    this.dispose(); 
+        Make_Payroll makepayroll = new Make_Payroll(null, true);
+        makepayroll.setVisible(true);
+
     }//GEN-LAST:event_btn_MPPayrollActionPerformed
 
     private void btn_MAddRemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MAddRemActionPerformed
-        // TODO add your handling code here:
+        this.dispose(); 
+        Employee_DetailsUpdate empDetailsUpdate = new Employee_DetailsUpdate(null, true);    
+        empDetailsUpdate.setVisible(true);
+  
     }//GEN-LAST:event_btn_MAddRemActionPerformed
+
+    private void btn_AttendanceViewerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AttendanceViewerActionPerformed
+        this.dispose();
+        AttendanceView_Main attendanceView = new AttendanceView_Main();
+        attendanceView.setLocationRelativeTo(null); 
+        attendanceView.setVisible(true);
+   
+    }//GEN-LAST:event_btn_AttendanceViewerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,6 +236,7 @@ workHours.setVisible(true);
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
             MainDialog dialog = new MainDialog(new javax.swing.JFrame(), true);
+            dialog.setLocationRelativeTo(null);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -199,19 +247,20 @@ workHours.setVisible(true);
         });
     }
 
+    public void setLoggedInUser(String firstName, String lastName) {
+    lbl_User.setText(lastName + ", " + firstName);
+}
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_AttendanceViewer;
     private javax.swing.JButton btn_MAddRem;
-    private javax.swing.JButton btn_MAttendance;
     private javax.swing.JButton btn_MEDetails;
     private javax.swing.JButton btn_MExit;
     private javax.swing.JButton btn_MPPayroll;
     private javax.swing.JButton btn_MWHours;
+    private javax.swing.JColorChooser jColorChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbl_User;
     private javax.swing.JLabel lbl_main;
     // End of variables declaration//GEN-END:variables
-
-    // ✅ Custom fields (inside class)
-    private javax.swing.JTable payrollTable;
-    private javax.swing.JScrollPane payrollScrollPane;
-    private javax.swing.table.DefaultTableModel payrollTableModel;
-
 } // 

@@ -1,0 +1,408 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ */
+package motorphgui;
+
+import javax.swing.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+
+/**
+ *
+ * @author admin
+ */
+public class RF_WHours extends javax.swing.JDialog {
+
+    private final String empID;
+    private final String cutoffPeriod;
+    
+    /**
+     * Creates new form Employee_Details
+     */
+    public RF_WHours(java.awt.Frame parent, boolean modal, String empID, String cutoffPeriod) {
+        super(parent, modal);
+        this.empID = empID;
+        this.cutoffPeriod = cutoffPeriod;
+        initComponents();
+        calculateAttendance();
+    }
+
+        private void calculateAttendance() {
+            List<String[]> attendanceData = CSVUtil.readCSV("src/main/resources/attendance_data.csv");
+
+            if (attendanceData == null || attendanceData.size() <= 1) {
+                JOptionPane.showMessageDialog(this, "Attendance data not found or empty.");
+                return;
+            }
+
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm");
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MMMM d yyyy");
+
+            // Parse selected cutoff period
+            LocalDate periodEnd;
+            try {
+                periodEnd = LocalDate.parse(cutoffPeriod, inputFormatter);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Invalid cutoff period format: " + cutoffPeriod);
+                return;
+            }
+
+            // Determine periodStart as previous cutoff + 1 day
+            String[] cutoffs = {
+                "June 15 2024", "June 30 2024", "July 15 2024", "July 31 2024",
+                "August 15 2024", "August 31 2024", "September 15 2024", "September 30 2024",
+                "October 15 2024", "October 31 2024", "November 15 2024", "November 30 2024",
+                "December 15 2024", "December 31 2024"
+            };
+
+            LocalDate periodStart = null;
+            for (int i = 0; i < cutoffs.length; i++) {
+                if (cutoffs[i].equals(cutoffPeriod)) {
+                    if (i > 0) {
+                        LocalDate prevCutoff = LocalDate.parse(cutoffs[i - 1], inputFormatter);
+                        periodStart = prevCutoff.plusDays(1);
+                    } else {
+                        // First cutoff, start from 14 days prior
+                        periodStart = periodEnd.minusDays(14);
+                    }
+                    break;
+                }
+            }
+
+            double totalWorkHours = 0.0;
+            double totalRegularHours = 0.0;
+            double totalOvertimeHours = 0.0;
+            long totalLateMinutes = 0;
+            boolean nameSet = false;
+
+            for (int i = 1; i < attendanceData.size(); i++) {
+                String[] row = attendanceData.get(i);
+                if (row.length < 6) continue;
+
+                if (!row[0].trim().equals(empID)) continue;
+
+                // Set name once
+                if (!nameSet) {
+                    lbl_Att_LastName.setText(row[1].trim());
+                    lbl_Att_FirstName.setText(row[2].trim());
+                    nameSet = true;
+                }
+
+                try {
+                    LocalDate date = LocalDate.parse(row[3].trim(), dateFormatter);
+
+                    // Filter by cutoff period
+                    if (date.isBefore(periodStart) || date.isAfter(periodEnd)) continue;
+
+                    LocalTime timeIn = LocalTime.parse(row[4].trim(), timeFormatter);
+                    LocalTime timeOut = LocalTime.parse(row[5].trim(), timeFormatter);
+
+                    // Total work hours
+                    Duration workDuration = Duration.between(timeIn, timeOut);
+                    double workHours = workDuration.toMinutes() / 60.0;
+                    totalWorkHours += workHours;
+
+                    // Late minutes (after 9:10 AM)
+                    LocalTime lateThreshold = LocalTime.of(9, 10);
+                    if (timeIn.isAfter(lateThreshold)) {
+                        totalLateMinutes += Duration.between(lateThreshold, timeIn).toMinutes();
+                    }
+
+                    // Regular hours (9:00 to 17:00)
+                    LocalTime regStart = LocalTime.of(9, 0);
+                    LocalTime regEnd = LocalTime.of(17, 0);
+                    LocalTime actualStart = timeIn.isAfter(regStart) ? timeIn : regStart;
+                    LocalTime actualEnd = timeOut.isBefore(regEnd) ? timeOut : regEnd;
+
+                    if (actualEnd.isAfter(actualStart)) {
+                        totalRegularHours += Duration.between(actualStart, actualEnd).toMinutes() / 60.0;
+                    }
+
+                    // Overtime (after 17:10)
+                    LocalTime overtimeStart = LocalTime.of(17, 10);
+                    if (timeOut.isAfter(overtimeStart)) {
+                        totalOvertimeHours += Duration.between(overtimeStart, timeOut).toMinutes() / 60.0;
+                    }
+
+                } catch (Exception ex) {
+                    System.out.println("Skipping row due to parse error: " + String.join(",", row));
+                    ex.printStackTrace();
+                }
+            }
+
+            lbl_Att_EmpID.setText(empID);
+            lbl_Att_COP.setText(cutoffPeriod);
+            lbl_Att_TWHours.setText(String.format("%.2f", totalWorkHours) + " hrs");
+            lbl_Att_RegHours.setText(String.format("%.2f", totalRegularHours) + " hrs");
+            lbl_Att_OT.setText(String.format("%.2f", totalOvertimeHours) + " hrs");
+            lbl_Att_LMin.setText(totalLateMinutes + " min");
+        }
+        
+        
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        lbl_main = new javax.swing.JLabel();
+        lbl_ED = new javax.swing.JLabel();
+        lbl_ED1 = new javax.swing.JLabel();
+        lbl_Att_EmpID = new javax.swing.JLabel();
+        lbl_Att_COP = new javax.swing.JLabel();
+        lbl_ED2 = new javax.swing.JLabel();
+        lbl_ED3 = new javax.swing.JLabel();
+        lbl_ED4 = new javax.swing.JLabel();
+        lbl_ED5 = new javax.swing.JLabel();
+        lbl_Att_TWHours = new javax.swing.JLabel();
+        lbl_Att_RegHours = new javax.swing.JLabel();
+        lbl_Att_OT = new javax.swing.JLabel();
+        lbl_Att_LMin = new javax.swing.JLabel();
+        btn_Results_Home = new javax.swing.JButton();
+        btn_Results_Home1 = new javax.swing.JButton();
+        lbl_ED6 = new javax.swing.JLabel();
+        lbl_ED7 = new javax.swing.JLabel();
+        lbl_Att_LastName = new javax.swing.JLabel();
+        lbl_Att_FirstName = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        lbl_main.setFont(new java.awt.Font("Sans Serif Collection", 1, 18)); // NOI18N
+        lbl_main.setText("Attendance");
+
+        lbl_ED.setText("Employee ID:");
+
+        lbl_ED1.setText("Cut-off Period");
+
+        lbl_Att_EmpID.setText("Att_Res_EmpID");
+
+        lbl_Att_COP.setText("Att_Res_COP");
+
+        lbl_ED2.setText("Total Work Hours:");
+
+        lbl_ED3.setText("Regular Hours");
+
+        lbl_ED4.setText("Overtime Hours");
+
+        lbl_ED5.setText("Late Minutes:");
+
+        lbl_Att_TWHours.setText("Att_Res_TWHours");
+
+        lbl_Att_RegHours.setText("Att_Res_RegHours");
+
+        lbl_Att_OT.setText("Att_Res_OT");
+
+        lbl_Att_LMin.setText("Att_Res_LMin");
+
+        btn_Results_Home.setText("Back to Main");
+        btn_Results_Home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Results_HomeActionPerformed(evt);
+            }
+        });
+
+        btn_Results_Home1.setText("Exit");
+        btn_Results_Home1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Results_Home1ActionPerformed(evt);
+            }
+        });
+
+        lbl_ED6.setText("Last Name:");
+
+        lbl_ED7.setText("First Name:");
+
+        lbl_Att_LastName.setText("Att_Res_LastName");
+
+        lbl_Att_FirstName.setText("Att_Res_FirstName");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_ED3, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_Att_RegHours, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_ED2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_Att_TWHours, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_ED, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_Att_EmpID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_main)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_ED1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_Att_COP, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_ED4, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_Att_OT, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_ED5, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_Att_LMin, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(btn_Results_Home)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_Results_Home1)
+                .addGap(58, 58, 58))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_ED6, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_Att_LastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_ED7, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_Att_FirstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_main)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_ED)
+                    .addComponent(lbl_Att_EmpID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_ED6)
+                    .addComponent(lbl_Att_LastName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_ED7)
+                    .addComponent(lbl_Att_FirstName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_ED1)
+                    .addComponent(lbl_Att_COP))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_ED2)
+                    .addComponent(lbl_Att_TWHours))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_ED3)
+                    .addComponent(lbl_Att_RegHours))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_ED4)
+                    .addComponent(lbl_Att_OT))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_ED5)
+                    .addComponent(lbl_Att_LMin))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Results_Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Results_Home1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
+        );
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_Results_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Results_HomeActionPerformed
+        this.dispose(); 
+
+        String lastName = lbl_Att_LastName.getText();
+        String firstName = lbl_Att_FirstName.getText();
+
+        MainDialog_RF mainDialog = new MainDialog_RF(null, true, empID, firstName, lastName);
+        mainDialog.setLocationRelativeTo(null);
+        mainDialog.setVisible(true);     
+    }//GEN-LAST:event_btn_Results_HomeActionPerformed
+
+    private void btn_Results_Home1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Results_Home1ActionPerformed
+        System.exit(0);  
+    }//GEN-LAST:event_btn_Results_Home1ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(RF_WHours.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(RF_WHours.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(RF_WHours.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(RF_WHours.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                RF_WHours dialog = new RF_WHours(new JFrame(), true, "10001", "July 15 2024");
+                dialog.setLocationRelativeTo(null);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Results_Home;
+    private javax.swing.JButton btn_Results_Home1;
+    private javax.swing.JLabel lbl_Att_COP;
+    private javax.swing.JLabel lbl_Att_EmpID;
+    private javax.swing.JLabel lbl_Att_FirstName;
+    private javax.swing.JLabel lbl_Att_LMin;
+    private javax.swing.JLabel lbl_Att_LastName;
+    private javax.swing.JLabel lbl_Att_OT;
+    private javax.swing.JLabel lbl_Att_RegHours;
+    private javax.swing.JLabel lbl_Att_TWHours;
+    private javax.swing.JLabel lbl_ED;
+    private javax.swing.JLabel lbl_ED1;
+    private javax.swing.JLabel lbl_ED2;
+    private javax.swing.JLabel lbl_ED3;
+    private javax.swing.JLabel lbl_ED4;
+    private javax.swing.JLabel lbl_ED5;
+    private javax.swing.JLabel lbl_ED6;
+    private javax.swing.JLabel lbl_ED7;
+    private javax.swing.JLabel lbl_main;
+    // End of variables declaration//GEN-END:variables
+}

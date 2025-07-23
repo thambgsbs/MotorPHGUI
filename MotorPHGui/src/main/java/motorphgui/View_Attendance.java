@@ -4,10 +4,14 @@
  */
 package motorphgui;
 
+import java.util.List;
+import javax.swing.*;
+
 /**
  *
  * @author admin
  */
+
 public class View_Attendance extends javax.swing.JDialog {
 
     /**
@@ -16,7 +20,23 @@ public class View_Attendance extends javax.swing.JDialog {
     public View_Attendance(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
+        List<String[]> employeeData = CSVUtil.readCSV("src/main/resources/employee-data.csv");
+
+        if (employeeData != null && employeeData.size() > 1) {
+            combobox_EmpID.addItem("Choose Employee");
+            for (int i = 1; i < employeeData.size(); i++) {
+                String[] row = employeeData.get(i);
+                if (row.length > 0) {
+                    String empID = row[0].trim();
+                    combobox_EmpID.addItem(empID);
+                }
+            }
+        } else {
+            combobox_EmpID.addItem("No employees found");
+        }
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,68 +49,52 @@ public class View_Attendance extends javax.swing.JDialog {
 
         lbl_main = new javax.swing.JLabel();
         lbl_ED = new javax.swing.JLabel();
-        txt_EDEmpID = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_View = new javax.swing.JButton();
         lbl_ED1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        combobox_cutoffperiod = new javax.swing.JComboBox<>();
+        combobox_EmpID = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lbl_main.setFont(new java.awt.Font("Sans Serif Collection", 1, 18)); // NOI18N
         lbl_main.setText("Attendance");
 
-        lbl_ED.setText("Enter Employee ID (10001-100034):");
+        lbl_ED.setText("Employee ID:");
 
-        txt_EDEmpID.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        txt_EDEmpID.setForeground(new java.awt.Color(153, 153, 153));
-        txt_EDEmpID.setText("Please Enter Employee ID");
-        txt_EDEmpID.addActionListener(new java.awt.event.ActionListener() {
+        btn_View.setText("View");
+        btn_View.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_EDEmpIDActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Search");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_ViewActionPerformed(evt);
             }
         });
 
         lbl_ED1.setText("Cut-off Period");
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Period", "June 15", "2024", "June 30", "2024", "July 15", "2024", "July 31", "2024", "August 15", "2024", "August 31", "2024", "September 15", "2024", "September 30", "2024", "October 15", "2024", "October 31", "2024", "November 15", "2024", "November 30", "2024", "December 15", "2024", "December 31", "2024" }));
+        combobox_cutoffperiod.setForeground(new java.awt.Color(153, 153, 153));
+        combobox_cutoffperiod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Period", "June 15 2024", "June 30 2024", "July 15 2024", "July 31 2024", "August 15 2024", "August 31 2024", "September 15 2024", "September 30 2024", "October 15 2024", "October 31 2024", "November 15 2024", "November 30 2024", "December 15 2024", "December 31 2024" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_ED, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_EDEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lbl_main)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbl_ED1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lbl_ED1, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                    .addComponent(lbl_ED, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(combobox_EmpID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(combobox_cutoffperiod, 0, 169, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(btn_View)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_main)
+                .addGap(90, 90, 90))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,28 +102,36 @@ public class View_Attendance extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(lbl_main)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_ED)
-                    .addComponent(txt_EDEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combobox_EmpID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_ED1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                    .addComponent(combobox_cutoffperiod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_View)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_EDEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_EDEmpIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_EDEmpIDActionPerformed
+    private void btn_ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ViewActionPerformed
+        String selectedEmpID = (String) combobox_EmpID.getSelectedItem();
+        String selectedPeriod = (String) combobox_cutoffperiod.getSelectedItem();
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (selectedEmpID == null || selectedEmpID.equals("Choose Employee") ||
+            selectedPeriod == null || selectedPeriod.equals("Choose a Period")) {
+            JOptionPane.showMessageDialog(this, "Please select both Employee ID and Cut-off Period.");
+            return;
+        }
+
+        View_AttendanceResult resultDialog = new View_AttendanceResult(
+            new javax.swing.JFrame(), true, selectedEmpID, selectedPeriod);
+        resultDialog.setVisible(true);
+    }//GEN-LAST:event_btn_ViewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,39 +149,28 @@ public class View_Attendance extends javax.swing.JDialog {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View_Attendance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View_Attendance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View_Attendance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (Exception ex) {
             java.util.logging.Logger.getLogger(View_Attendance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                View_Attendance dialog = new View_Attendance(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            View_Attendance dialog = new View_Attendance(new javax.swing.JFrame(), true);
+            dialog.setLocationRelativeTo(null);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btn_View;
+    private javax.swing.JComboBox<String> combobox_EmpID;
+    private javax.swing.JComboBox<String> combobox_cutoffperiod;
     private javax.swing.JLabel lbl_ED;
     private javax.swing.JLabel lbl_ED1;
     private javax.swing.JLabel lbl_main;
-    private javax.swing.JTextField txt_EDEmpID;
     // End of variables declaration//GEN-END:variables
 }
