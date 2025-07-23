@@ -49,8 +49,6 @@ public class MainDialog extends javax.swing.JDialog {
         btn_MPPayroll = new javax.swing.JButton();
         lbl_main = new javax.swing.JLabel();
         btn_MAddRem = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        lbl_User = new javax.swing.JLabel();
         btn_AttendanceViewer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -94,12 +92,6 @@ public class MainDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jLabel1.setText("Logged in as:");
-
-        lbl_User.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lbl_User.setText("lbl_user");
-
         btn_AttendanceViewer.setText("Attendance Viewer");
         btn_AttendanceViewer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,17 +111,10 @@ public class MainDialog extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btn_MAddRem, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_MWHours, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_MPPayroll, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_MExit, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGap(57, 57, 57)
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lbl_User, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(8, 8, 8)))
+                            .addComponent(btn_MAddRem, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_MWHours, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_MPPayroll, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_MExit, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_MEDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_AttendanceViewer, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(55, Short.MAX_VALUE))
@@ -151,11 +136,7 @@ public class MainDialog extends javax.swing.JDialog {
                 .addComponent(btn_MPPayroll)
                 .addGap(6, 6, 6)
                 .addComponent(btn_MExit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lbl_User))
-                .addGap(14, 14, 14))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -259,8 +240,6 @@ public class MainDialog extends javax.swing.JDialog {
     private javax.swing.JButton btn_MPPayroll;
     private javax.swing.JButton btn_MWHours;
     private javax.swing.JColorChooser jColorChooser1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lbl_User;
     private javax.swing.JLabel lbl_main;
     // End of variables declaration//GEN-END:variables
 } // 
