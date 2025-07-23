@@ -2,3 +2,18 @@
 
 USERNAME: EMPLOYEE ID
 DEFAULT PASSWORD: User12345
+
+
+-----------------------------
+
+[  For RBAC  ]
+With admin access:
+
+Username: 10001
+Password: User12345
+
+
+Without admin access:
+
+Username: 10018
+Password: User12345
