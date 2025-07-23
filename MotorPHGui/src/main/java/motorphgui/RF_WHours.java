@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author admin
  */
-public class View_AttendanceResult extends javax.swing.JDialog {
+public class RF_WHours extends javax.swing.JDialog {
 
     private final String empID;
     private final String cutoffPeriod;
@@ -22,7 +22,7 @@ public class View_AttendanceResult extends javax.swing.JDialog {
     /**
      * Creates new form Employee_Details
      */
-    public View_AttendanceResult(java.awt.Frame parent, boolean modal, String empID, String cutoffPeriod) {
+    public RF_WHours(java.awt.Frame parent, boolean modal, String empID, String cutoffPeriod) {
         super(parent, modal);
         this.empID = empID;
         this.cutoffPeriod = cutoffPeriod;
@@ -228,16 +228,16 @@ public class View_AttendanceResult extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_ED3, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lbl_Att_RegHours, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+                        .addComponent(lbl_Att_RegHours, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_ED2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lbl_Att_TWHours, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+                        .addComponent(lbl_Att_TWHours, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_ED, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -249,15 +249,15 @@ public class View_AttendanceResult extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_ED1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lbl_Att_COP, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+                        .addComponent(lbl_Att_COP, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_ED4, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lbl_Att_OT, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+                        .addComponent(lbl_Att_OT, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_ED5, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lbl_Att_LMin, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)))
+                        .addComponent(lbl_Att_LMin, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
@@ -266,7 +266,7 @@ public class View_AttendanceResult extends javax.swing.JDialog {
                 .addComponent(btn_Results_Home1)
                 .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_ED6, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,9 +327,14 @@ public class View_AttendanceResult extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_Results_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Results_HomeActionPerformed
-    this.dispose(); 
-    MainDialog MainDia = new MainDialog(null, true);    
-    MainDia.setVisible(true);        // TODO add your handling code here:
+        this.dispose(); 
+
+        String lastName = lbl_Att_LastName.getText();
+        String firstName = lbl_Att_FirstName.getText();
+
+        MainDialog_RF mainDialog = new MainDialog_RF(null, true, empID, firstName, lastName);
+        mainDialog.setLocationRelativeTo(null);
+        mainDialog.setVisible(true);     
     }//GEN-LAST:event_btn_Results_HomeActionPerformed
 
     private void btn_Results_Home1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Results_Home1ActionPerformed
@@ -353,20 +358,20 @@ public class View_AttendanceResult extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View_AttendanceResult.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RF_WHours.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View_AttendanceResult.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RF_WHours.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View_AttendanceResult.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RF_WHours.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View_AttendanceResult.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RF_WHours.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                View_AttendanceResult dialog = new View_AttendanceResult(new JFrame(), true, "10001", "July 15 2024");
+                RF_WHours dialog = new RF_WHours(new JFrame(), true, "10001", "July 15 2024");
                 dialog.setLocationRelativeTo(null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override

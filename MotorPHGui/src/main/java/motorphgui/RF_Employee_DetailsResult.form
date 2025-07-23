@@ -24,127 +24,122 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="263" pref="263" max="-2" attributes="0"/>
+              <Component id="lbl_main" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
+              <Component id="lbl_resID" min="-2" pref="119" max="-2" attributes="0"/>
+              <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
+              <Component id="jLabel13" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
+              <Component id="lbl_resBasicSal" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
+              <Component id="lbl_resName" min="-2" pref="119" max="-2" attributes="0"/>
+              <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
+              <Component id="jLabel14" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
+              <Component id="lbl_resRiceSub" min="-2" pref="100" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="jLabel3" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
+              <Component id="lbl_resBday" min="-2" pref="119" max="-2" attributes="0"/>
+              <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
+              <Component id="jLabel15" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
+              <Component id="lbl_resPhoneAllowance" min="-2" pref="100" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="jLabel4" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
+              <Component id="lbl_resAdd" min="-2" pref="262" max="-2" attributes="0"/>
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel16" min="-2" pref="114" max="-2" attributes="0"/>
+                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lbl_resClothing" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="lbl_resSemiMonthly" min="-2" pref="100" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="jLabel6" min="-2" pref="96" max="-2" attributes="0"/>
+              <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+              <Component id="lbl_resPhone" min="-2" pref="155" max="-2" attributes="0"/>
+              <EmptySpace min="113" pref="113" max="-2" attributes="0"/>
+              <Component id="jLabel18" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
+              <Component id="lbl_resHourly" min="-2" pref="100" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="jLabel5" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
+              <Component id="lbl_resSSS" min="-2" pref="155" max="-2" attributes="0"/>
+              <EmptySpace min="113" pref="113" max="-2" attributes="0"/>
+              <Component id="jLabel19" min="-2" pref="143" max="-2" attributes="0"/>
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="lbl_resProratedAll" min="-2" pref="100" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="jLabel7" min="-2" pref="115" max="-2" attributes="0"/>
+              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+              <Component id="lbl_resPIN" min="-2" pref="155" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="jLabel8" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
+              <Component id="lbl_resTIN" min="-2" pref="155" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="jLabel9" min="-2" pref="106" max="-2" attributes="0"/>
+              <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+              <Component id="lbl_resMID" min="-2" pref="155" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="jLabel10" min="-2" pref="126" max="-2" attributes="0"/>
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="lbl_resES" min="-2" pref="155" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="jLabel11" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
+              <Component id="lbl_resPOS" min="-2" pref="155" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel12" min="-2" pref="139" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="286" pref="286" max="-2" attributes="0"/>
-                      <Component id="lbl_main" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
-                      <Component id="lbl_resID" min="-2" pref="119" max="-2" attributes="0"/>
-                      <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
-                      <Component id="jLabel13" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
-                      <Component id="lbl_resBasicSal" min="-2" pref="118" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
-                      <Component id="lbl_resName" min="-2" pref="119" max="-2" attributes="0"/>
-                      <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
-                      <Component id="jLabel14" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
-                      <Component id="lbl_resRiceSub" min="-2" pref="118" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
-                      <Component id="lbl_resBday" min="-2" pref="119" max="-2" attributes="0"/>
-                      <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
-                      <Component id="jLabel15" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
-                      <Component id="lbl_resPhoneAllowance" min="-2" pref="118" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
-                      <Component id="lbl_resAdd" min="-2" pref="262" max="-2" attributes="0"/>
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel16" min="-2" pref="114" max="-2" attributes="0"/>
-                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lbl_resClothing" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_resSemiMonthly" min="-2" pref="118" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" pref="96" max="-2" attributes="0"/>
-                      <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
-                      <Component id="lbl_resPhone" min="-2" pref="155" max="-2" attributes="0"/>
-                      <EmptySpace min="113" pref="113" max="-2" attributes="0"/>
-                      <Component id="jLabel18" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
-                      <Component id="lbl_resHourly" min="-2" pref="118" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
-                      <Component id="lbl_resSSS" min="-2" pref="155" max="-2" attributes="0"/>
-                      <EmptySpace min="113" pref="113" max="-2" attributes="0"/>
-                      <Component id="jLabel19" min="-2" pref="143" max="-2" attributes="0"/>
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="lbl_resProratedAll" min="-2" pref="118" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel7" min="-2" pref="115" max="-2" attributes="0"/>
-                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Component id="lbl_resPIN" min="-2" pref="155" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel8" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
-                      <Component id="lbl_resTIN" min="-2" pref="155" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel9" min="-2" pref="106" max="-2" attributes="0"/>
-                      <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                      <Component id="lbl_resMID" min="-2" pref="155" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel10" min="-2" pref="126" max="-2" attributes="0"/>
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="lbl_resES" min="-2" pref="155" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel11" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                      <Component id="lbl_resPOS" min="-2" pref="155" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel12" min="-2" pref="139" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="132" pref="132" max="-2" attributes="0"/>
-                              <Component id="lbl_resIS" min="-2" pref="155" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="191" pref="191" max="-2" attributes="0"/>
-                      <Component id="btn_Results_Home" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                      <Component id="btn_Results_UpdateRec" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
-                      <Component id="btn_Results_Home1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="132" pref="132" max="-2" attributes="0"/>
+                      <Component id="lbl_resIS" min="-2" pref="155" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="191" pref="191" max="-2" attributes="0"/>
+              <Component id="btn_Results_Home" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+              <Component id="btn_Results_UpdateRec" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
+              <Component id="btn_Results_Home1" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -233,13 +228,13 @@
                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                   <Component id="lbl_resIS" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btn_Results_Home" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_Results_UpdateRec" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_Results_Home1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

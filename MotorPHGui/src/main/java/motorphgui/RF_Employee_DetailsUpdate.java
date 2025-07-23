@@ -5,93 +5,56 @@
 package motorphgui;
 
 import javax.swing.*;
-import java.io.*;
 import java.util.*;
 
 /**
  *
  * @author admin
  */
-public class Employee_DetailsUpdate extends javax.swing.JDialog {
+public class RF_Employee_DetailsUpdate extends javax.swing.JDialog {
 
     private List<String[]> employeeDataList = new ArrayList<>();
 
-    public Employee_DetailsUpdate(java.awt.Frame parent, boolean modal) {
+    public RF_Employee_DetailsUpdate(java.awt.Frame parent, boolean modal, String empID) {
         super(parent, modal);
         initComponents();
         txt_Update_Address.setLineWrap(true);
         txt_Update_Address.setWrapStyleWord(true);
-        loadEmployeeData();
-        setupComboBoxListener();
+        lbl_EmpID.setText(empID);
+        loadEmployeeData(empID);
     }
 
-private void loadEmployeeData() {
-    combobox_EmpID.addItem("Add New Employee");
-    List<String[]> data = CSVUtil.readCSV("src/main/resources/employee-data.csv");
+private void loadEmployeeData(String empID) {
+    employeeDataList = CSVUtil.readCSV("src/main/resources/employee-data.csv");
 
-    if (data != null) {
-        for (String[] row : data) {
-            if (row.length >= 19) {
-                employeeDataList.add(row);
-                combobox_EmpID.addItem(row[0]);
+    if (employeeDataList != null) {
+        for (String[] emp : employeeDataList) {
+            if (emp.length >= 19 && emp[0].equals(empID)) {
+                // Set fields
+                txt_Update_Name.setText(emp[1] + ", " + emp[2]);
+                txt_Update_Bday.setText(emp[3]);
+                txt_Update_Address.setText(emp[4]);
+                txt_Update_Phone.setText(emp[5]);
+                txt_Update_SSN.setText(emp[6]);
+                txt_Update_MID.setText(emp[7]);
+                txt_Update_TIN.setText(emp[8]);
+                txt_Update_PIN.setText(emp[9]);
+                txt_Update_EmpStat.setText(emp[10]);
+                txt_Update_Position.setText(emp[11]);
+                txt_Update_ImmediateSup.setText(emp[12]);
+                txt_Update_Basic.setText(emp[13]);
+                txt_Update_RiceSub.setText(emp[14]);
+                txt_Update_PhoneAll.setText(emp[15]);
+                txt_Update_ClothingAll.setText(emp[16]);
+                txt_Update_Semi.setText(emp[17]);
+                txt_Update_Hourly.setText(emp[18]);
+                break;
             }
         }
+    } else {
+        employeeDataList = new ArrayList<>(); // avoid null later
     }
 }
-
-
-    private void setupComboBoxListener() {
-        combobox_EmpID.addActionListener(e -> {
-            String selectedId = (String) combobox_EmpID.getSelectedItem();
-            if (selectedId == null || selectedId.equals("Add New Employee")) {
-                clearTextFields();
-                return;
-            }
-
-            for (String[] emp : employeeDataList) {
-                if (emp[0].equals(selectedId)) {
-                    txt_Update_Name.setText(emp[1] + ", " + emp[2]);
-                    txt_Update_Bday.setText(emp[3]);
-                    txt_Update_Address.setText(emp[4]);
-                    txt_Update_Phone.setText(emp[5]);
-                    txt_Update_SSN.setText(emp[6]);
-                    txt_Update_MID.setText(emp[7]);
-                    txt_Update_TIN.setText(emp[8]);
-                    txt_Update_PIN.setText(emp[9]);
-                    txt_Update_EmpStat.setText(emp[10]);
-                    txt_Update_Position.setText(emp[11]);
-                    txt_Update_ImmediateSup.setText(emp[12]);
-                    txt_Update_Basic.setText(emp[13]);
-                    txt_Update_RiceSub.setText(emp[14]);
-                    txt_Update_PhoneAll.setText(emp[15]);
-                    txt_Update_ClothingAll.setText(emp[16]);
-                    txt_Update_Semi.setText(emp[17]);
-                    txt_Update_Hourly.setText(emp[18]);
-                    break;
-                }
-            }
-        });
-    }
-
-    private void clearTextFields() {
-        txt_Update_Name.setText("");
-        txt_Update_Bday.setText("");
-        txt_Update_Address.setText("");
-        txt_Update_Phone.setText("");
-        txt_Update_SSN.setText("");
-        txt_Update_MID.setText("");
-        txt_Update_TIN.setText("");
-        txt_Update_PIN.setText("");
-        txt_Update_EmpStat.setText("");
-        txt_Update_Position.setText("");
-        txt_Update_ImmediateSup.setText("");
-        txt_Update_Basic.setText("");
-        txt_Update_RiceSub.setText("");
-        txt_Update_PhoneAll.setText("");
-        txt_Update_ClothingAll.setText("");
-        txt_Update_Semi.setText("");
-        txt_Update_Hourly.setText("");
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,7 +86,7 @@ private void loadEmployeeData() {
         jLabel18 = new javax.swing.JLabel();
         btn_Update_Back = new javax.swing.JButton();
         btn_Update_Exit = new javax.swing.JButton();
-        btn_Update_AddUpdate = new javax.swing.JButton();
+        btn_Update = new javax.swing.JButton();
         txt_Update_Name = new javax.swing.JTextField();
         txt_Update_Bday = new javax.swing.JTextField();
         txt_Update_Phone = new javax.swing.JTextField();
@@ -140,11 +103,10 @@ private void loadEmployeeData() {
         txt_Update_ClothingAll = new javax.swing.JTextField();
         txt_Update_Semi = new javax.swing.JTextField();
         txt_Update_Hourly = new javax.swing.JTextField();
-        btn_Update_Delete = new javax.swing.JButton();
-        combobox_EmpID = new javax.swing.JComboBox<>();
         jLabel222 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_Update_Address = new javax.swing.JTextArea();
+        lbl_EmpID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -202,21 +164,12 @@ private void loadEmployeeData() {
             }
         });
 
-        btn_Update_AddUpdate.setForeground(new java.awt.Color(51, 102, 0));
-        btn_Update_AddUpdate.setText("Add/Update Record");
-        btn_Update_AddUpdate.setToolTipText("");
-        btn_Update_AddUpdate.addActionListener(new java.awt.event.ActionListener() {
+        btn_Update.setForeground(new java.awt.Color(51, 102, 0));
+        btn_Update.setText("Update Record");
+        btn_Update.setToolTipText("");
+        btn_Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Update_AddUpdateActionPerformed(evt);
-            }
-        });
-
-        btn_Update_Delete.setForeground(new java.awt.Color(153, 0, 51));
-        btn_Update_Delete.setText("Delete Record");
-        btn_Update_Delete.setToolTipText("");
-        btn_Update_Delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Update_DeleteActionPerformed(evt);
+                btn_UpdateActionPerformed(evt);
             }
         });
 
@@ -226,6 +179,8 @@ private void loadEmployeeData() {
         txt_Update_Address.setColumns(20);
         txt_Update_Address.setRows(5);
         jScrollPane1.setViewportView(txt_Update_Address);
+
+        lbl_EmpID.setText("jLabel19");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -237,27 +192,7 @@ private void loadEmployeeData() {
                         .addGap(357, 357, 357)
                         .addComponent(lbl_main))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
-                        .addComponent(combobox_EmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(txt_Update_Basic, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel222)
-                        .addGap(6, 6, 6)
-                        .addComponent(txt_Update_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(txt_Update_RiceSub, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)
                         .addComponent(txt_Update_Bday, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,7 +201,7 @@ private void loadEmployeeData() {
                         .addGap(63, 63, 63)
                         .addComponent(txt_Update_PhoneAll, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,54 +216,74 @@ private void loadEmployeeData() {
                             .addComponent(txt_Update_Semi, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_Update_Hourly, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
                         .addComponent(txt_Update_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)
                         .addComponent(txt_Update_SSN, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addComponent(txt_Update_PIN, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)
                         .addComponent(txt_Update_TIN, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
                         .addComponent(txt_Update_MID, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
                         .addComponent(txt_Update_EmpStat, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)
                         .addComponent(txt_Update_Position, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(txt_Update_ImmediateSup, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
+                        .addGap(280, 280, 280)
                         .addComponent(btn_Update_Back)
                         .addGap(40, 40, 40)
-                        .addComponent(btn_Update_AddUpdate)
+                        .addComponent(btn_Update)
                         .addGap(34, 34, 34)
-                        .addComponent(btn_Update_Exit)
-                        .addGap(128, 128, 128)
-                        .addComponent(btn_Update_Delete)))
+                        .addComponent(btn_Update_Exit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel222))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbl_EmpID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_Update_Name, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE))
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(81, 81, 81)
+                                .addComponent(txt_Update_RiceSub, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(81, 81, 81)
+                                .addComponent(txt_Update_Basic, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -338,12 +293,13 @@ private void loadEmployeeData() {
                 .addComponent(lbl_main)
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(combobox_EmpID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_Update_Basic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1)
+                                .addComponent(lbl_EmpID))
                             .addComponent(jLabel13))))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,10 +387,9 @@ private void loadEmployeeData() {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_Update_Back)
-                    .addComponent(btn_Update_AddUpdate)
-                    .addComponent(btn_Update_Exit)
-                    .addComponent(btn_Update_Delete))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(btn_Update)
+                    .addComponent(btn_Update_Exit))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -442,8 +397,14 @@ private void loadEmployeeData() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_Update_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Update_BackActionPerformed
-        this.dispose(); 
-        MainDialog MainDia = new MainDialog(null, true);    
+        this.dispose();
+
+        String empID = lbl_EmpID.getText();
+        String[] nameParts = txt_Update_Name.getText().split(",", 2);
+        String lastName = nameParts.length > 0 ? nameParts[0].trim() : "";
+        String firstName = nameParts.length > 1 ? nameParts[1].trim() : "";
+
+        MainDialog_RF MainDia = new MainDialog_RF(null, true, empID, firstName, lastName);
         MainDia.setVisible(true);
     }//GEN-LAST:event_btn_Update_BackActionPerformed
 
@@ -451,92 +412,87 @@ private void loadEmployeeData() {
         System.exit(0);      // TODO add your handling code here:
     }//GEN-LAST:event_btn_Update_ExitActionPerformed
 
-    private void btn_Update_AddUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Update_AddUpdateActionPerformed
-        String empId = (String) combobox_EmpID.getSelectedItem();
-        if (empId == null || empId.isEmpty()) return;
+    private void btn_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdateActionPerformed
+    String empId = lbl_EmpID.getText();
 
-        String[] nameParts = txt_Update_Name.getText().split(",", 2);
-        String lastName = nameParts.length > 0 ? nameParts[0].trim() : "";
-        String firstName = nameParts.length > 1 ? nameParts[1].trim() : "";
+    if (empId == null || empId.isEmpty()) return;
 
-        String[] newRecord = new String[]{
-                empId.equals("Add New Employee") ? generateNewEmpId() : empId,
-                lastName,
-                firstName,
-                txt_Update_Bday.getText(),
-                txt_Update_Address.getText(),
-                txt_Update_Phone.getText(),
-                txt_Update_SSN.getText(),
-                txt_Update_MID.getText(),
-                txt_Update_TIN.getText(),
-                txt_Update_PIN.getText(),
-                txt_Update_EmpStat.getText(),
-                txt_Update_Position.getText(),
-                txt_Update_ImmediateSup.getText(),
-                txt_Update_Basic.getText(),
-                txt_Update_RiceSub.getText(),
-                txt_Update_PhoneAll.getText(),
-                txt_Update_ClothingAll.getText(),
-                txt_Update_Semi.getText(),
-                txt_Update_Hourly.getText()
+    String[] nameParts = txt_Update_Name.getText().split(",", 2);
+    String lastName = nameParts.length > 0 ? nameParts[0].trim() : "";
+    String firstName = nameParts.length > 1 ? nameParts[1].trim() : "";
+
+    boolean updated = false;
+
+    for (int i = 0; i < employeeDataList.size(); i++) {
+        String[] existingRecord = employeeDataList.get(i);
+
+        if (existingRecord[0].equals(empId)) {
+
+            existingRecord[1] = lastName;
+            existingRecord[2] = firstName;
+            existingRecord[3] = txt_Update_Bday.getText();
+            existingRecord[4] = txt_Update_Address.getText();
+            existingRecord[5] = txt_Update_Phone.getText();
+            existingRecord[6] = txt_Update_SSN.getText();
+            existingRecord[7] = txt_Update_MID.getText();
+            existingRecord[8] = txt_Update_TIN.getText();
+            existingRecord[9] = txt_Update_PIN.getText();
+            existingRecord[10] = txt_Update_EmpStat.getText();
+            existingRecord[11] = txt_Update_Position.getText();
+            existingRecord[12] = txt_Update_ImmediateSup.getText();
+            existingRecord[13] = txt_Update_Basic.getText();
+            existingRecord[14] = txt_Update_RiceSub.getText();
+            existingRecord[15] = txt_Update_PhoneAll.getText();
+            existingRecord[16] = txt_Update_ClothingAll.getText();
+            existingRecord[17] = txt_Update_Semi.getText();
+            existingRecord[18] = txt_Update_Hourly.getText();
+            updated = true;
+            break;
+        }
+    }
+
+    if (!updated) {
+        // If employee not found, append new record WITHOUT T and U
+        String[] newRecord = new String[] {
+            empId,
+            lastName,
+            firstName,
+            txt_Update_Bday.getText(),
+            txt_Update_Address.getText(),
+            txt_Update_Phone.getText(),
+            txt_Update_SSN.getText(),
+            txt_Update_MID.getText(),
+            txt_Update_TIN.getText(),
+            txt_Update_PIN.getText(),
+            txt_Update_EmpStat.getText(),
+            txt_Update_Position.getText(),
+            txt_Update_ImmediateSup.getText(),
+            txt_Update_Basic.getText(),
+            txt_Update_RiceSub.getText(),
+            txt_Update_PhoneAll.getText(),
+            txt_Update_ClothingAll.getText(),
+            txt_Update_Semi.getText(),
+            txt_Update_Hourly.getText(),
+            "User12345",
+            "NO"
         };
+        employeeDataList.add(newRecord);
+    }
 
-        boolean updated = false;
-        for (int i = 0; i < employeeDataList.size(); i++) {
-            if (employeeDataList.get(i)[0].equals(newRecord[0])) {
-                String[] existing = employeeDataList.get(i);
-                // Preserve columns T and U if they exist
-                if (existing.length > 19) {
-                    newRecord = Arrays.copyOf(newRecord, 21);
-                    newRecord[19] = existing[19];
-                    newRecord[20] = existing[20];
-                }
-                employeeDataList.set(i, newRecord);
-                updated = true;
-                break;
-            }
-        }
-
-        if (!updated) {
-            // New record: Add default columns T and U
-            newRecord = Arrays.copyOf(newRecord, 21);
-            newRecord[19] = "User12345"; // default column T
-            newRecord[20] = "NO";        // default column U
-
-            employeeDataList.add(newRecord);
-            combobox_EmpID.addItem(newRecord[0]);
-        }
-
-        saveEmployeeDataToCSV();
-        JOptionPane.showMessageDialog(this, updated ? "Record updated!" : "New employee added!");
-
-    }//GEN-LAST:event_btn_Update_AddUpdateActionPerformed
-
+    saveEmployeeDataToCSV();
+    JOptionPane.showMessageDialog(this, updated ? "Record updated!" : "New record added!");
+    }//GEN-LAST:event_btn_UpdateActionPerformed
     private void txt_Update_EmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Update_EmpIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_Update_EmpIDActionPerformed
-
-    private void btn_Update_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Update_DeleteActionPerformed
-        String selectedId = (String) combobox_EmpID.getSelectedItem();
-        if (selectedId == null || selectedId.equals("Add New Employee")) {
-            JOptionPane.showMessageDialog(this, "Please select a valid employee to delete.");
-            return;
-        }
-
-        employeeDataList.removeIf(emp -> emp[0].equals(selectedId));
-        combobox_EmpID.removeItem(selectedId);
-        saveEmployeeDataToCSV();
-        clearTextFields();
-        JOptionPane.showMessageDialog(this, "Record deleted.");
-    }//GEN-LAST:event_btn_Update_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            Employee_DetailsUpdate dialog = new Employee_DetailsUpdate(new javax.swing.JFrame(), true);
-            dialog.setLocationRelativeTo(null); 
+            RF_Employee_DetailsUpdate dialog = new RF_Employee_DetailsUpdate(new javax.swing.JFrame(), true, "101");
+            dialog.setLocationRelativeTo(null);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -547,34 +503,19 @@ private void loadEmployeeData() {
         });
     }
 
-
     private void saveEmployeeDataToCSV() {
     CSVUtil.writeCSV("src/main/resources/employee-data.csv", employeeDataList);
 }
 
 
-    private String generateNewEmpId() {
-        int maxId = 0;
-        for (String[] emp : employeeDataList) {
-            try {
-                int id = Integer.parseInt(emp[0].replaceAll("[^0-9]", ""));
-                if (id > maxId) maxId = id;
-            } catch (NumberFormatException ignored) {
-            }
-        }
-        return String.valueOf(maxId + 1);
-    }
 
     
     
     
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Update_AddUpdate;
+    private javax.swing.JButton btn_Update;
     private javax.swing.JButton btn_Update_Back;
-    private javax.swing.JButton btn_Update_Delete;
     private javax.swing.JButton btn_Update_Exit;
-    private javax.swing.JComboBox<String> combobox_EmpID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -595,6 +536,7 @@ private void loadEmployeeData() {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_EmpID;
     private javax.swing.JLabel lbl_main;
     private javax.swing.JTextArea txt_Update_Address;
     private javax.swing.JTextField txt_Update_Basic;
